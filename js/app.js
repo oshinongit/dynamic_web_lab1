@@ -9,6 +9,9 @@ $(function() {
     var dishDetailView = new DishDetailView($("#dishDetailView"), model);
 
 
+    $("#toggleSidebar").click(function() {
+        $("#mydinner").toggleClass("hide");
+    });
 
 
 	/**

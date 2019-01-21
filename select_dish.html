@@ -9,15 +9,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="./style.css">
+
   </head>
-  <body class="d-flex flex-column flex-grow-1 bg-secondary">
-	<div id="banner" class="d-flex justify-content-center">
-		<div class="h1">Dinner planner</div>
-</div>
+  <body class="d-flex flex-column flex-grow-1">
+      <div id="banner" class="d-flex justify-content-between bg-secondary">
+          <div></div>
+  		<div class="h1">Dinner planner</div>
+          <div id="sidebarButton" class="align-self-center mr-3" style="visibility: hidden;">
+            <button type="button" class="btn btn-primary" id="toggleSidebar">☰</button>
+          </div>
+      </div>
 
-  <div id="lower_screen" class="d-flex bg-danger" style="height:100vh;">
+  <div id="lower_screen" class="d-flex " style="height:100vh;">
 
-			<div id="mydinner" class="d-flex flex-column" style="min-width:250px; max-width:250px;">
+			<div id="mydinner" class="d-flex flex-column hide" style="min-width:250px; max-width:250px;">
         <div class="container">
 				<p>My Dinner</p>
         <div class="d-flex flex-column">
@@ -37,9 +43,9 @@
     </div>
 			</div>
     </div>
-      <div id="selectDishView" class="d-flex flex-column bg-success flex-grow-1">
+      <div id="selectDishView" class="d-flex flex-column flex-grow-1">
 
-        <div class="bg-warning p-2">Find a dish
+        <div class=" p-2">Find a dish
           <div class="d-flex flex-row">
 
     <input type="text" class="w-25" placeholder="Enter keywords">

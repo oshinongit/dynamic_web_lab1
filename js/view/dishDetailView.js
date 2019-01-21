@@ -18,7 +18,7 @@ var DishDetailView = function (container, model) {
     var ingredients = container.find("#dishIngredients");
     var sum = 0;
 
-    description.html("<h1>" + dish.name + "</h1><img width='300px' src='images/" + dish.image + "'/><p>" + dish.description + "</p><button type='button' class='btn btn-outline-light'>Back to search</button>");
+    description.html("<h1>" + dish.name + "</h1><img width='300px' src='images/" + dish.image + "'/><p>" + dish.description + "</p><button type='button' class='btn btn-outline-dark'>Back to search</button>");
 
     ingredients.append("<h2>Ingredients</h2>");
     var html = "<table class='table w-100'>";
@@ -28,6 +28,6 @@ var DishDetailView = function (container, model) {
     });
     html += "<tr><td></td><td></td><td>" + sum + " SEK</td></tr>"
     html += "</table>";
-    html += "<button type='button' class='btn btn-outline-light'>Add to menu</button>"
+    html += "<button type='button' class='btn btn-outline-dark'>Add to menu</button>"
     ingredients.append(html);
 }

@@ -9,15 +9,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="./style.css">
+
   </head>
-  <body class="d-flex flex-column flex-grow-1 bg-secondary">
-	<div id="banner" class="d-flex justify-content-center">
+  <body class="d-flex flex-column flex-grow-1">
+	<div id="banner" class="d-flex justify-content-between bg-secondary">
+        <div></div>
 		<div class="h1">Dinner planner</div>
-</div>
+        <div id="sidebarButton" class="align-self-center mr-3" style="visibility: hidden;">
+          <button type="button" class="btn btn-primary" id="toggleSidebar">☰</button>
+        </div>
+    </div>
+  <div id="lower_screen" class="d-flex" style="height:100vh;">
 
-  <div id="lower_screen" class="d-flex bg-danger" style="height:100vh;">
-
-      <div id="mydinner" class="d-flex flex-column" style="min-width:250px; max-width:250px;">
+      <div id="mydinner" class="d-flex flex-column collapse hide" style="min-width:250px; max-width:250px;">
   <div class="container">
           <p>My Dinner</p>
   <div class="d-flex flex-column">
@@ -37,8 +42,8 @@
 </div>
       </div>
 </div>
-      <div id="dishDetailView" class="d-flex flex-row bg-success flex-grow-1 py-4">
-        <div id="dishDescription" class="d-flex flex-column flex-fill w-50 mx-5"></div>
+      <div id="dishDetailView" class="d-flex flex-row flex-grow-1 py-4 wrap-mobile">
+        <div id="dishDescription" class="d-flex flex-column flex-fill w-50 mx-5 mb-5"></div>
         <div id="dishIngredients" class="d-flex flex-column flex-fill mx-5"></div>
       </div>
 

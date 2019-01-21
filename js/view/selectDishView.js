@@ -30,6 +30,6 @@ var SelectDishView = function (container, model) {
 
 
     dishes.forEach(function(dish) {
-        container.find("#dishList").append("<a href='dish_details.html' class='text-light'><div class='text-center'><img src='images/" + dish.image + "' alt='bla bla'/><p>" + dish.name + "</p></div></a>");
+        container.find("#dishList").append("<a href='dish_details.html'><div class='text-center'><img src='images/" + dish.image + "' alt='bla bla'/><p>" + dish.name + "</p></div></a>");
     });
 }

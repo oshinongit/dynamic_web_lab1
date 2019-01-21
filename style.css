@@ -1,0 +1,17 @@
+@media screen and (max-width: 976px) {
+    #mydinner {
+        min-width: 100% !important;
+    }
+
+    .hide {
+        display: none !important;
+    }
+
+    #sidebarButton {
+        visibility: visible !important;
+    }
+
+    .wrap-mobile {
+        flex-wrap: wrap;
+    }
+}
