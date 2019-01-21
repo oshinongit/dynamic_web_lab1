@@ -52,9 +52,12 @@ var ExampleView = function (container, model) {
 	 * Here we use @var {jQuery object} numberOfGuests that is a reference to <span>
 	 * in our view to dynamically set it's value to "Hello World".
 	 */
-	numberOfGuests.html("Hello World");
+	numberOfGuests.html(exampleView.setNumberOfGuests());
 
-  var title = document.body.children[0].children[0];
-  title.classList.add('p-3', 'mb-2', 'bg-secondary');
+
+  //var title = document.body.children[0].children[0];
+  //title.classList.add('p-3', 'mb-2', 'bg-secondary');
+
+
 
 }
