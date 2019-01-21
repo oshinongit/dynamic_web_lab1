@@ -6,6 +6,10 @@ $(function() {
 	//var exampleView = new ExampleView($("#exampleView"));
     var selectDishView = new SelectDishView($("#selectDishView"), model);
 
+	
+
+
+
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.
