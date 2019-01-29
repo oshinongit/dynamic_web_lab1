@@ -14,31 +14,28 @@
  */
 var SidebarView = function (container, model) {
 
-    var numberOfGuests = container.find("#numberOfGuests");
-    numberOfGuests.val(model.getNumberOfGuests());
-
-    var myDish = model.getDish(1);
     var totalprice = 0;
 
     var our_menu = model.getFullMenu();
-    var html = "<table class='table w-100'>";
+    var html = '<div class="container"><p>My Dinner</p><div class="d-flex flex-column"><p>People:</p><div id="buttons_people"><div class="input-group"><input type="text" class="w-25" value="' + model.getNumberOfGuests() + '" id="numberOfGuests"><div class="input-group-append"><button class="btn btn-outline-dark" type="button">+</button><button class="btn btn-outline-dark" type="button">-</button></div></div></div><div id="dishSideList" class="mt-5"></div></div></div>';
+    html += "<table class='table w-100'>";
 
     our_menu.forEach(function(dish){
       var dish_price = 0;
-      html += "<tr><td>" + myDish.name + "</td>";
-      var dish_ingredients = myDish.ingredients;
+      html += "<tr><td>" + dish.name + "</td>";
+      var dish_ingredients = dish.ingredients;
       dish_ingredients.forEach(function(ingredient) {
         totalprice += ingredient.price;
         dish_price += ingredient.price;
       });
 
-      html += "<td>" + dish_price + "</td></tr>"
+      html += "<td>" + dish_price + " SEK</td></tr>"
 
     });
 
-    html += "<tr><td>"+ totalprice + "</td></tr>""</table>"
+    html += "<tr><td></td><td>"+ totalprice + " SEK</td></tr></table>"
 
-    container.find("#dishSideList").html(html);
+    container.html(html);
 
 
     //container.find("#dishSideList").html("<table class='table w-100'><tr><td>" + myDish.name + "</td><td>" + totalprice + " SEK</td></tr><tr><td></td><td>"+ "TOTAL PRICE FOR ALL DISHES" +" SEK</td></tr></table>");

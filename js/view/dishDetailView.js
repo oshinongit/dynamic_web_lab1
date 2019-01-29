@@ -13,6 +13,8 @@
  * @param {Object} model - the reference to the Dinner Model
  */
 var DishDetailView = function (container, model) {
+    container.html('<div id="dishDescription" class="d-flex flex-column flex-fill w-50 mx-5 mb-5"></div><div id="dishIngredients" class="d-flex flex-column flex-fill mx-5"></div>');
+
     var dish = model.getDish(1);
     var description = container.find("#dishDescription");
     var ingredients = container.find("#dishIngredients");
