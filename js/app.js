@@ -1,4 +1,6 @@
 function showSelectDish(model) {
+    model.removeAllObservers();
+    model.addObserver(() => showSelectDish(model));
     document.getElementById("content").innerHTML = "";
 
     var sidebar = document.createElement("div");
@@ -15,6 +17,8 @@ function showSelectDish(model) {
 }
 
 function showDishDetailView(model) {
+    model.removeAllObservers();
+    model.addObserver(() => showDishDetailView(model));
     document.getElementById("content").innerHTML = "";
 
     var sidebar = document.createElement("div");
@@ -31,6 +35,8 @@ function showDishDetailView(model) {
 }
 
 function showDinnerOverview(model) {
+    model.removeAllObservers();
+    model.addObserver(() => showDinnerOverview(model));
     document.getElementById("content").innerHTML = "";
 
     var dinnerOverview = document.createElement("div");
@@ -41,6 +47,8 @@ function showDinnerOverview(model) {
 }
 
 function showPrintView(model) {
+    model.removeAllObservers();
+    model.addObserver(() => showPrintView(model));
     document.getElementById("content").innerHTML = "";
 
     var print = document.createElement("div");
@@ -55,7 +63,6 @@ var model = null;
 $(function() {
 	//We instantiate our model
     model = new DinnerModel();
-    model.addObserver(() => showSelectDish(model));
 	// And create the instance of ExampleView
 	//var exampleView = new ExampleView($("#exampleView"));
     //var selectDishView = new SelectDishView($("#selectDishView"), model);

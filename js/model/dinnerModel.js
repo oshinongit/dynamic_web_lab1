@@ -13,7 +13,16 @@ class Observable{
            }
      }
 
-     removeObserver(observer){  /* remove observer from array */}
+     removeObserver(observer) {
+        var index = this._observers.indexOf(observer);
+        if (index > -1) {
+            this._observers.splice(index, 1);
+        }
+     }
+
+     removeAllObservers() {
+         this._observers = [];
+     }
 }
 
 //DinnerModel Object constructor
