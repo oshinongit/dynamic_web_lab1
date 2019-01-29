@@ -12,6 +12,7 @@
  * @param {jQuery object} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */
+
 var SelectDishView = function (container, model) {
     var type = container.find("#typeSelect").val();
 
@@ -28,8 +29,21 @@ var SelectDishView = function (container, model) {
         console.log(dishes);
     }
 
+    var div_id = 0;
 
     dishes.forEach(function(dish) {
-        container.find("#dishList").append("<a href='dish_details.html'><div class='text-center'><img src='images/" + dish.image + "' alt='bla bla'/><p>" + dish.name + "</p></div></a>");
+
+        div_id++;
+        var new_div = document.createElement("div");
+        new_div.id = "dish_" + div_id;
+        new_div.classList.add('text-center');
+        var innerData = document.createElement("img");
+        innerData.src = "images/" + dish.image;
+        innerData.alt = "Missing image";
+
+        new_div.append(innerData);
+        container.find("#dishList").append(new_div);
+
+        //container.find("#dishList").append("<div class='text-center'><img src='images/" + dish.image + "' alt='bla bla'/><p>" + dish.name + "</p></div>");
     });
 }

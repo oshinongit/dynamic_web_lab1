@@ -5,13 +5,17 @@ $(function() {
 	// And create the instance of ExampleView
 	//var exampleView = new ExampleView($("#exampleView"));
     var selectDishView = new SelectDishView($("#selectDishView"), model);
-    var peopleView = new PeopleView($("#mydinner"), model);
+    var sidebarView = new SidebarView($("#mydinner"), model);
     var dishDetailView = new DishDetailView($("#dishDetailView"), model);
 
 
     $("#toggleSidebar").click(function() {
         $("#mydinner").toggleClass("hide");
     });
+
+		function MoveToDishDetails() {
+			$("#dishDetailView").toggleClass("hide_div")
+		}
 
 
 	/**

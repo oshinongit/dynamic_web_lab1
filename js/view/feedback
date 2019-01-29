@@ -1,0 +1,8 @@
+"Upon code inspection, your code has been found to have some issues that should be solved to pass lab1. These are the most important problems:
+* The currently selected menu should also be loaded from the model through the views, just like the number of guests. #No hardcoding in the view. Hard code in model and fetch to view.
+* Views are supposed to save you from code duplication, and control specific parts of the page that repeat in different scnearios.  You should not have to write big parts of the HTML twice (or more) if the same component is in many pages.*
+* Looks like some views still need to be implemented properly. Sidebar view not existing for example.
+Also, as a nice pointer:
+* Please add a README that describes the project and how to run it/work with it/the technology underneath. Imagine the target audience is a future programmer employee. Will be especially important for the projects later."
+Ludvig Janiuk , 28 jan kl 0.55
+To clarify: You will need to fix these issues so that you actually pass lab1 level. You can make sure to get that passed for example on the same occasion as when you will be presenting lab2 as well.

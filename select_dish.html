@@ -8,7 +8,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
     <link rel="stylesheet" type="text/css" href="./style.css">
 
   </head>
@@ -43,7 +42,9 @@
     </div>
 			</div>
     </div>
-      <div id="selectDishView" class="d-flex flex-column flex-grow-1">
+
+    <!-- SEPARATOR VIEW 1 -->
+      <div id="selectDishView" class="d-none d-flex flex-column flex-grow-1">
 
         <div class=" p-2">Find a dish
           <div class="d-flex flex-row">
@@ -68,6 +69,16 @@
         <div id="dishList" class="d-flex justify-content-start p-4 flex-wrap">
         </div>
       </div>
+      <!-- SEPARATOR VIEW 1 -->
+
+      <!-- SEPARATOR VIEW 2 -->
+
+      <div id="dishDetailView" class="hide_div d-flex flex-row flex-grow-1 py-4 wrap-mobile d-none">
+        <div id="dishDescription" class="d-flex flex-column flex-fill w-50 mx-5 mb-5"></div>
+        <div id="dishIngredients" class="d-flex flex-column flex-fill mx-5"></div>
+      </div>
+
+      <!-- SEPARATOR VIEW 2 -->
 
 
 
@@ -89,7 +100,7 @@
 	<!-- <script src="js/view/exampleView.js"></script> -->
 	<!-- TODO: Here you should include JS code for your other views -->
     <script src="js/view/dishDetailView.js"></script>
-    <script src="js/view/peopleView.js"></script>
+    <script src="js/view/sidebarView.js"></script>
     <script src="js/view/selectDishView.js"></script>
   </body>
 </html>

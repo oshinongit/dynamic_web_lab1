@@ -14,4 +14,9 @@
     .wrap-mobile {
         flex-wrap: wrap;
     }
+
+}
+
+.hide_div {
+    display: none !important;
 }
