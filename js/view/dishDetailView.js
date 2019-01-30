@@ -12,24 +12,40 @@
  * @param {jQuery object} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */
-var DishDetailView = function (container, model) {
-    container.html('<div id="dishDescription" class="d-flex flex-column flex-fill w-50 mx-5 mb-5"></div><div id="dishIngredients" class="d-flex flex-column flex-fill mx-5"></div>');
 
-    var dish = model.getDish(1);
-    var description = container.find("#dishDescription");
-    var ingredients = container.find("#dishIngredients");
-    var sum = 0;
+ class DishDetailView extends View {
+     constructor(container, model) {
+         super(container, model);
+     }
 
-    description.html("<h1>" + dish.name + "</h1><img width='300px' src='images/" + dish.image + "'/><p>" + dish.description + "</p><button type='button' class='btn btn-outline-dark'>Back to search</button>");
+     update() {
+         super.update();
 
-    ingredients.append("<h2>Ingredients</h2>");
-    var html = "<table class='table w-100'>";
-    dish.ingredients.forEach(function(ingredient) {
-        html += "<tr><td>" + ingredient.quantity + " " + ingredient.unit + "</td><td>" + ingredient.name + "</td><td>" + ingredient.price + " SEK</td></tr>";
-        sum += ingredient.price;
-    });
-    html += "<tr><td></td><td></td><td>" + sum + " SEK</td></tr>"
-    html += "</table>";
-    html += "<button type='button' class='btn btn-outline-dark'>Add to menu</button>"
-    ingredients.append(html);
-}
+         var sidebarView = new SidebarView(this.container, model);
+         var dishDetail = document.createElement("div");
+         dishDetail.className = "d-flex flex-row flex-grow-1 py-4 wrap-mobile";
+
+         this.container.appendChild(dishDetail);
+
+         let container = $(dishDetail);
+         container.html('<div id="dishDescription" class="d-flex flex-column flex-fill w-50 mx-5 mb-5"></div><div id="dishIngredients" class="d-flex flex-column flex-fill mx-5"></div>');
+
+         var dish = this.model.getDish(1);
+         var description = container.find("#dishDescription");
+         var ingredients = container.find("#dishIngredients");
+         var sum = 0;
+
+         description.html("<h1>" + dish.name + "</h1><img width='300px' src='images/" + dish.image + "'/><p>" + dish.description + "</p><button type='button' class='btn btn-outline-dark'>Back to search</button>");
+
+         ingredients.append("<h2>Ingredients</h2>");
+         var html = "<table class='table w-100'>";
+         dish.ingredients.forEach(function(ingredient) {
+             html += "<tr><td>" + ingredient.quantity + " " + ingredient.unit + "</td><td>" + ingredient.name + "</td><td>" + ingredient.price + " SEK</td></tr>";
+             sum += ingredient.price;
+         });
+         html += "<tr><td></td><td></td><td>" + sum + " SEK</td></tr>"
+         html += "</table>";
+         html += "<button type='button' class='btn btn-outline-dark'>Add to menu</button>"
+         ingredients.append(html);
+     }
+ }

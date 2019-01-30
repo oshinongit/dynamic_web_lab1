@@ -1,4 +1,4 @@
-class Observable{
+class Observable {
     constructor(){
 	   this._observers = [];
    }

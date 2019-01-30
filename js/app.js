@@ -60,6 +60,58 @@ function showPrintView(model) {
 
 var model = null;
 
+class App {
+    constructor() {
+        this.views = new Map;
+        this.activeView = "";
+        this.model = new DinnerModel();
+    }
+
+    addView(name, view) {
+        this.views[name] = new view(document.getElementById("content"), this.model);
+        this.model.addObserver(() => { if (name == this.activeView) { this.views[name].update(); } });
+    }
+
+    setActiveView(name) {
+        this.activeView = name;
+        this.views[this.activeView].update();
+    }
+
+    getActiveView() {
+        return this.activeView;
+    }
+
+    getModel() {
+        return this.model;
+    }
+}
+
+class View {
+    constructor(container, model) {
+        this.container = container;
+        this.model = model;
+        this.update();
+    }
+
+    update() {
+        this.container.innerHTML = "";
+    }
+}
+
+class TestView extends View {
+    constructor(container, model) {
+        super(container, model);
+    }
+
+    update() {
+        super.update();
+
+        this.container.innerHTML = "<p>Hej!</p><button onclick='app.setActiveView(\"SelectDish\")'>Tillbaka</button>";
+    }
+}
+
+var app = null;
+
 $(function() {
 	//We instantiate our model
     model = new DinnerModel();
@@ -69,13 +121,15 @@ $(function() {
     //var sidebarView = new SidebarView($("#mydinner"), model);
     //var dishDetailView = new DishDetailView($("#dishDetailView"), model);
 
-
     $("#toggleSidebar").click(function() {
-        $("#mydinner").toggleClass("hide");
+        $("#sidebar").toggleClass("hide");
     });
 
-    showSelectDish(model);
-
+    app = new App();
+    app.addView("SelectDish", SelectDishView);
+    app.addView("DishDetail", DishDetailView);
+    app.addView("Test", TestView);
+    app.setActiveView("Test");
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
