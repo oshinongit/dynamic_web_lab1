@@ -37,6 +37,7 @@ class DinnerModel extends Observable {
 	setNumberOfGuests(num) {
         this.numberOfGuests = num;
         this.notifyObservers({});
+        return this.numberOfGuests;
 	}
 
 	getNumberOfGuests() {

@@ -110,6 +110,30 @@ class TestView extends View {
     }
 }
 
+class SideBarViewController{
+ constructor(model) {
+    document.getElementById("plusbutton").addEventListener("click",
+        () => model.setNumberOfGuests(model.getNumberOfGuests() + 1) );
+    document.getElementById("minusbutton").addEventListener("click",
+        () => model.setNumberOfGuests(model.getNumberOfGuests() - 1) );
+  }
+}
+
+class SelectDishViewController{
+ constructor(model) {
+
+   let filter =  getElementById("searchfield").innerHTML;
+   let type = getElementById("typeSelect").val();
+
+   document.getElementById("searchbutton").addEventListener("click",
+       () => model.setNumberOfGuests(type, filter) );
+
+  }
+}
+
+
+
+
 var app = null;
 
 $(function() {
@@ -129,7 +153,12 @@ $(function() {
     app.addView("SelectDish", SelectDishView);
     app.addView("DishDetail", DishDetailView);
     app.addView("Test", TestView);
-    app.setActiveView("Test");
+    app.setActiveView("SelectDish");
+
+    var SideBar_control = new SideBarViewController(model) //Modellen uppdateras men inte viewen. Något observer-relaterat som jag inte fattar.
+    //console.log(app.views["SelectDish"]) --Den här fungerar för att komma åt viewobjektet
+    //console.log(app.views["sidebarView"]) --Inte denna. Kanske för att vi skapar view:n inne i en annan klass(DishSelect etc..)
+
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to

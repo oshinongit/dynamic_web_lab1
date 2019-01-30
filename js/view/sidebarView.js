@@ -15,8 +15,13 @@
 
 class SidebarView extends View {
     constructor(container, model) {
+
         super(container, model);
+
+        this.plusButton = "fisk";
     }
+
+
 
     update() {
         super.update();
@@ -30,7 +35,7 @@ class SidebarView extends View {
         var totalprice = 0;
 
         var our_menu = model.getFullMenu();
-        var html = '<div class="container"><p>My Dinner</p><div class="d-flex flex-column"><p>People:</p><div id="buttons_people"><div class="input-group"><input type="text" class="w-25" value="' + model.getNumberOfGuests() + '" id="numberOfGuests"><div class="input-group-append"><button class="btn btn-outline-dark" type="button">+</button><button class="btn btn-outline-dark" type="button">-</button></div></div></div><div id="dishSideList" class="mt-5"></div></div></div>';
+        var html = '<div class="container"><p>My Dinner</p><div class="d-flex flex-column"><p>People:</p><div id="buttons_people"><div class="input-group"><input type="text" class="w-25" value="' + model.getNumberOfGuests() + '" id="numberOfGuests"><div class="input-group-append"><button id="plusbutton" class="btn btn-outline-dark" type="button">+</button><button id="minusbutton" class="btn btn-outline-dark" type="button">-</button></div></div></div><div id="dishSideList" class="mt-5"></div></div></div>';
         html += "<table class='table w-100'>";
 
         our_menu.forEach(function(dish){
@@ -49,5 +54,8 @@ class SidebarView extends View {
         html += "<tr><td></td><td>"+ totalprice + " SEK</td></tr></table>"
 
         container.html(html);
+
+
+
     }
 }
