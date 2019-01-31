@@ -59,6 +59,7 @@ $(function() {
     app.addView("SelectDish", SelectDishView);
     app.addView("DishDetail", DishDetailView);
     app.addView("DishOverview", DishOverviewView);
+    app.addView("Print", PrintView);
     app.setActiveView("SelectDish");
 
     //console.log(app.views["SelectDish"]) --Den här fungerar för att komma åt viewobjektet

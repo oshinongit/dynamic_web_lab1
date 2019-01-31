@@ -4,6 +4,8 @@ class SideBarViewController{
         () => model.setNumberOfGuests(model.getNumberOfGuests() + 1) );
     document.getElementById("minusbutton").addEventListener("click",
         () => model.setNumberOfGuests(model.getNumberOfGuests() - 1) );
+        document.getElementById("confirm_button").addEventListener("click",
+            () => app.setActiveView("DishOverview") );
   }
 }
 
@@ -40,6 +42,20 @@ class DishDetailViewController{
 }
 
 class DishOverviewViewController{
+ constructor(model) {
+       document.getElementById("buttonBackToEditDinner").addEventListener("click",
+           (e) => {
+               app.setActiveView("SelectDish");
+           });
+
+       document.getElementById("printButton").addEventListener("click",
+           (e) => {
+               app.setActiveView("Print");
+           });
+  }
+}
+
+class PrintViewController{
  constructor(model) {
        document.getElementById("buttonBackToEditDinner").addEventListener("click",
            (e) => {

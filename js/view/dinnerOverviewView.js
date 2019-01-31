@@ -28,23 +28,23 @@
          html += '<div id="dinnerOverviewList" class="d-flex justify-content-center p-4 flex-wrap my-5">';
 
          var menu = this.model.getFullMenu();
-         var totalPrice = 0;
+         let guests = this.model.getNumberOfGuests();
+         console.log(this.model);
 
          menu.forEach(function(dish) {
              var ingredients = dish.ingredients;
              var dishPrice = 0;
 
              ingredients.forEach(function(ingredient) {
-                 dishPrice += ingredient.price;
+                 dishPrice += ingredient.price * guests;
              });
 
              html += "<div class='text-center mx-2'><img src='images/" + dish.image + "' alt='bla bla'/><p>" + dish.name + "</p><p>" + dishPrice + " SEK</p></div>";
 
-             totalPrice += dishPrice;
          });
 
-         html += "<div style='border-left: 2px solid black; height: 200px;' class='mx-3'></div><div class='text-center mx-2 d-flex align-items-end'><div><p>Total</p><p>" + totalPrice + " SEK</p></div></div></div>";
-         html += '<button type="button" class="btn btn-primary mx-5 btn-lg">Print full recipe</button>';
+         html += "<div style='border-left: 2px solid black; height: 200px;' class='mx-3'></div><div class='text-center mx-2 d-flex align-items-end'><div><p>Total</p><p>" + this.model.getTotalMenuPrice() + " SEK</p></div></div></div>";
+         html += '<button id="printButton" type="button" class="btn btn-primary mx-5 btn-lg">Print full recipe</button>';
 
          container.append(html);
 
