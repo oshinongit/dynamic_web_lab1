@@ -49,7 +49,7 @@ class SidebarView extends View {
 
         });
 
-        html += "<tr><td></td><td>"+ model.getTotalMenuPrice() + " SEK</td></tr></table>"
+        html += "<tr><td></td><td>"+ model.getTotalMenuPrice() + " SEK</td></tr></table><button id='confirm_button' class='btn btn-outline-dark' type='button'>Confirm Dinner</button>"
 
         container.html(html);
 
