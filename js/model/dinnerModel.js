@@ -30,7 +30,7 @@ class DinnerModel extends Observable {
 
     constructor() {
         super();
-        this.numberOfGuests = 0;
+        this.numberOfGuests = 1;
         this.menu = [];
     }
 
@@ -86,6 +86,7 @@ class DinnerModel extends Observable {
 	//it is removed from the menu and the new one added.
 	addDishToMenu(id) {
 		//TODO Lab 1
+
         this.menu.push(this.getDish(id));
         this.notifyObservers({});
 	}

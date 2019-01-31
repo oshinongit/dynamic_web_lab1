@@ -18,7 +18,7 @@
          super(container, model);
      }
 
-     update() {
+     update(id) {
          super.update();
 
          var sidebarView = new SidebarView(this.container, this.model);
@@ -30,12 +30,16 @@
          let container = $(dishDetail);
          container.html('<div id="dishDescription" class="d-flex flex-column flex-fill w-50 mx-5 mb-5"></div><div id="dishIngredients" class="d-flex flex-column flex-fill mx-5"></div>');
 
-         var dish = this.model.getDish(1);
+         if (id == null) {
+             return;
+         }
+
+         var dish = this.model.getDish(id);
          var description = container.find("#dishDescription");
          var ingredients = container.find("#dishIngredients");
          var sum = 0;
 
-         description.html("<h1>" + dish.name + "</h1><img width='300px' src='images/" + dish.image + "'/><p>" + dish.description + "</p><button type='button' class='btn btn-outline-dark'>Back to search</button>");
+         description.html("<h1>" + dish.name + "</h1><img width='300px' src='images/" + dish.image + "'/><p>" + dish.description + "</p><button id='backToSearchButton' type='button' class='btn btn-outline-dark'>Back to search</button>");
 
          ingredients.append("<h2>Ingredients</h2>");
          var html = "<table class='table w-100'>";
@@ -45,7 +49,9 @@
          });
          html += "<tr><td></td><td></td><td>" + sum + " SEK</td></tr>"
          html += "</table>";
-         html += "<button type='button' class='btn btn-outline-dark'>Add to menu</button>"
+         html += "<button id='buttonAddToMenu' data-dishid='" + id + "' type='button' class='btn btn-outline-dark'>Add to menu</button>"
          ingredients.append(html);
+
+         this.controller = new DishDetailViewController(this.model);
      }
  }

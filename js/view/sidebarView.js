@@ -33,10 +33,8 @@ class SidebarView extends View {
         let container = $(sidebar);
         let model = this.model;
 
-        var totalprice = 0;
-
         var our_menu = model.getFullMenu();
-        var html = '<div class="container"><p>My Dinner</p><div class="d-flex flex-column"><p>People:</p><div id="buttons_people"><div class="input-group"><input type="text" class="w-25" value="' + model.getNumberOfGuests() + '" id="numberOfGuests"><div class="input-group-append"><button id="plusbutton" class="btn btn-outline-dark" type="button">+</button><button id="minusbutton" class="btn btn-outline-dark" type="button">-</button></div></div></div><div id="dishSideList" class="mt-5"></div></div></div>';
+        var html = '<div class="container"><p>My Dinner</p><div class="d-flex flex-column"><p>People:</p><div id="buttons_people"><div class="input-group"><input disabled type="text" class="w-25" value="' + model.getNumberOfGuests() + '" id="numberOfGuests"><div class="input-group-append"><button id="plusbutton" class="btn btn-outline-dark" type="button">+</button><button id="minusbutton" class="btn btn-outline-dark" type="button">-</button></div></div></div><div id="dishSideList" class="mt-5"></div></div></div>';
         html += "<table class='table w-100'>";
 
         our_menu.forEach(function(dish){
@@ -44,18 +42,17 @@ class SidebarView extends View {
           html += "<tr><td>" + dish.name + "</td>";
           var dish_ingredients = dish.ingredients;
           dish_ingredients.forEach(function(ingredient) {
-            totalprice += ingredient.price;
-            dish_price += ingredient.price;
+            dish_price += ingredient.price * model.getNumberOfGuests();
           });
 
           html += "<td>" + dish_price + " SEK</td></tr>"
 
         });
 
-        html += "<tr><td></td><td>"+ totalprice + " SEK</td></tr></table>"
+        html += "<tr><td></td><td>"+ model.getTotalMenuPrice() + " SEK</td></tr></table>"
 
         container.html(html);
 
-        this.controller = new SideBarViewController(app.getModel()); //Modellen uppdateras men inte viewen. Något observer-relaterat som jag inte fattar.
+        this.controller = new SideBarViewController(this.model); //Modellen uppdateras men inte viewen. Något observer-relaterat som jag inte fattar.
     }
 }

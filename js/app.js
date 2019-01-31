@@ -65,16 +65,18 @@ class App {
         this.views = new Map;
         this.activeView = "";
         this.model = new DinnerModel();
+        this.activeData = null;
     }
 
     addView(name, view) {
         this.views[name] = new view(document.getElementById("content"), this.model);
-        this.model.addObserver(() => { if (name == this.activeView) { this.views[name].update(); } });
+        this.model.addObserver(() => { if (name == this.activeView) { this.views[name].update(this.activeData); } });
     }
 
-    setActiveView(name) {
+    setActiveView(name, data) {
         this.activeView = name;
-        this.views[this.activeView].update();
+        this.views[this.activeView].update(data);
+        this.activeData = data;
     }
 
     getActiveView() {
@@ -121,13 +123,31 @@ class SideBarViewController{
 
 class SelectDishViewController{
  constructor(model) {
+       document.getElementById("searchbutton").addEventListener("click",
+           () => {
+               //let filter =  document.getElementById("searchfield").innerHTML;
+               //let typeSelect = document.getElementById("typeSelect");
+               //let type = typeSelect.options[typeSelect.selectedIndex].value;
+               model.notifyObservers();
+           });
+       $(".dishItem").click(function(e) {
+           let id = e.currentTarget.id.slice(9)
+           app.setActiveView("DishDetail", id);
+       });
+  }
+}
 
-   let filter =  getElementById("searchfield").innerHTML;
-   let type = getElementById("typeSelect").val();
+class DishDetailViewController{
+ constructor(model) {
+       document.getElementById("buttonAddToMenu").addEventListener("click",
+           (e) => {
+               model.addDishToMenu(e.target.dataset.dishid);
+           });
 
-   document.getElementById("searchbutton").addEventListener("click",
-       () => model.setNumberOfGuests(type, filter) );
-
+       document.getElementById("backToSearchButton").addEventListener("click",
+           (e) => {
+               app.setActiveView("SelectDish");
+           });
   }
 }
 
