@@ -31,6 +31,7 @@ class SidebarView extends View {
         sidebar.className = "d-flex flex-column hide";
         sidebar.style = "min-width:250px; max-width:250px;";
         let container = $(sidebar);
+        let model = this.model;
 
         var totalprice = 0;
 
