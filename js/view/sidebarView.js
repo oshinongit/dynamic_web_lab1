@@ -56,7 +56,6 @@ class SidebarView extends View {
 
         container.html(html);
 
-
-
+        this.controller = new SideBarViewController(app.getModel()); //Modellen uppdateras men inte viewen. Något observer-relaterat som jag inte fattar.
     }
 }

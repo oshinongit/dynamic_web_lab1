@@ -138,7 +138,7 @@ var app = null;
 
 $(function() {
 	//We instantiate our model
-    model = new DinnerModel();
+    //model = new DinnerModel();
 	// And create the instance of ExampleView
 	//var exampleView = new ExampleView($("#exampleView"));
     //var selectDishView = new SelectDishView($("#selectDishView"), model);
@@ -155,7 +155,6 @@ $(function() {
     app.addView("Test", TestView);
     app.setActiveView("SelectDish");
 
-    var SideBar_control = new SideBarViewController(model) //Modellen uppdateras men inte viewen. Något observer-relaterat som jag inte fattar.
     //console.log(app.views["SelectDish"]) --Den här fungerar för att komma åt viewobjektet
     //console.log(app.views["sidebarView"]) --Inte denna. Kanske för att vi skapar view:n inne i en annan klass(DishSelect etc..)
 
