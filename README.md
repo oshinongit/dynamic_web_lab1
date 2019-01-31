@@ -11,4 +11,16 @@ What's in the project
 * [js/view/](https://github.com/kth-csc-iprog/dinnerplanner-html/tree/master/js/view) - here you can find a JavaScript code of an example view. The view sets up some initial components and their values.
 * [js/app.js](https://github.com/kth-csc-iprog/dinnerplanner-html/blob/master/js/app.js) - this is the overall code of the application. It is responsible for initial setup of the app (when the page loads for the first time). 
 * [images/](https://github.com/kth-csc-iprog/dinnerplanner-html/tree/master/images) - folder contains some pictures you can use for your dishes
-# dynamic_web_lab1
+
+# dynamic_web_lab2
+To start the webpage click the index.html file. Everything runs from that.
+
+app.js builds the program.
+
+dinnerModel.js stores all data like number of people, dishes(with ingredients and prices etc..). The observer class is in here.
+
+Observers are used to perform modular updates of the webpage.
+
+The view folder contains .Js files for each view. These views populate the webpage with new information upon interaction.
+
+The controllers implement event listeners for the interactions. Controllers are found in Controllers.js.
