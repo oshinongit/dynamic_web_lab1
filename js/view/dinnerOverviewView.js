@@ -13,7 +13,7 @@
  * @param {Object} model - the reference to the Dinner Model
  */
 var DinnerOverviewView = function (container, model) {
-    container.html('<div id="dinnerOverviewView" class="d-flex flex-column flex-grow-1 py-4"><div id="dinnerOverviewList" class="d-flex justify-content-between mx-5"><h2>My Dinner: 3 people</h2><button type="button" class="btn btn-primary mx-5">Go back and edit dinner</button></div>');
+    container.html('<div id="dinnerOverviewView" class="d-flex flex-column flex-grow-1 py-4"><div id="dinnerOverviewList" class="d-flex justify-content-between mx-5"><h2>My Dinner: ' + this.model.getNumberOfGuests + ' people</h2><button id="back_to_selectView" type="button" class="btn btn-primary mx-5">Go back and edit dinner</button></div>');
 
     var html = '<div id="dinnerOverviewList" class="d-flex justify-content-center p-4 flex-wrap my-5">';
 

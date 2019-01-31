@@ -118,6 +118,8 @@ class SideBarViewController{
         () => model.setNumberOfGuests(model.getNumberOfGuests() + 1) );
     document.getElementById("minusbutton").addEventListener("click",
         () => model.setNumberOfGuests(model.getNumberOfGuests() - 1) );
+    document.getElementById("confirm_button").addEventListener("click",
+        () => app.setActiveView("DishOverview"));
   }
 }
 
@@ -172,7 +174,7 @@ $(function() {
     app = new App();
     app.addView("SelectDish", SelectDishView);
     app.addView("DishDetail", DishDetailView);
-    app.addView("Test", TestView);
+
     app.setActiveView("SelectDish");
 
     //console.log(app.views["SelectDish"]) --Den här fungerar för att komma åt viewobjektet
