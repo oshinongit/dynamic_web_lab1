@@ -51,8 +51,6 @@ class SelectDishView extends View {
 
         dishes.forEach(function(dish) {
             var element = document.createElement("div");
-            element.className = "dishItem";
-            element.id = "dishItem_" + dish.id;
             var view = new DishItemView(element, model, dish);
             jqueryContainer.find("#dishList").append(element);
         });

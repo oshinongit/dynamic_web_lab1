@@ -87,8 +87,23 @@ class DinnerModel extends Observable {
 	addDishToMenu(id) {
 		//TODO Lab 1
 
-        this.menu.push(this.getDish(id));
-        this.notifyObservers({});
+        let dish = this.getDish(id);
+        let alreadyExists = false;
+
+        this.menu.forEach(function(d) {
+            if (dish.type == d.type) {
+                alreadyExists = true;
+                return;
+            }
+        });
+
+        if (!alreadyExists) {
+            this.menu.push(dish);
+            this.notifyObservers({});
+            return true;
+        }
+
+        return false;
 	}
 
 	//Removes dish from menu

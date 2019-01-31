@@ -20,3 +20,18 @@
 .hide_div {
     display: none !important;
 }
+
+.dishItem {
+    border: 1px solid lightgray;
+    border-radius: 7px;
+    margin: 10px;
+}
+
+.dishItem > img {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.dishItem > p {
+    width: auto;
+}
