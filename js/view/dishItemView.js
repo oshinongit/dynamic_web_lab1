@@ -14,5 +14,9 @@
  */
 
 var DishItemView = function (container, model, dish) {
+    if (dish.image == "") {
+        dish.image = "/images/dish.jpg"
+    }
+
     container.innerHTML = "<div id='dishItem_" + dish.id + "' class='dishItem text-center'><img src='https://spoonacular.com/recipeImages/" + dish.image + "' alt='" + dish.title + "'/><p>" + dish.title + "</p></div>";
 }

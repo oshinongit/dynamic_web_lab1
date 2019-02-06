@@ -21,7 +21,7 @@
      update(id) {
          super.update();
 
-         var sidebarView = new SidebarView(this.container, this.model);
+         //var sidebarView = new SidebarView(this.container, this.model);
          var dishDetail = document.createElement("div");
          dishDetail.className = "d-flex flex-row flex-grow-1 py-4 wrap-mobile";
 
@@ -56,6 +56,8 @@
              ingredients.append(html);
 
              this.controller = new DishDetailViewController(this.model);
+         }).catch(error => {
+             container.html("<p>Could not retrieve recipe.</p>");
          });
      }
  }

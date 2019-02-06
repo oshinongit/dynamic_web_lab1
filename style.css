@@ -14,7 +14,10 @@
     .wrap-mobile {
         flex-wrap: wrap;
     }
+}
 
+.forceHide {
+    display: none !important;
 }
 
 .hide_div {

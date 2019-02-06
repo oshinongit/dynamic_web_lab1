@@ -36,7 +36,7 @@ class DinnerModel extends Observable {
 
 	setNumberOfGuests(num) {
         this.numberOfGuests = num;
-        this.notifyObservers({onlyUpdate: "Sidebar"});
+        this.notifyObservers({onlyUpdateSidebar: true});
         return this.numberOfGuests;
 	}
 
@@ -89,7 +89,7 @@ class DinnerModel extends Observable {
 
         this.getDish(id).then(dish => {
             this.menu.push(dish);
-            this.notifyObservers({onlyUpdate: "Sidebar"});
+            this.notifyObservers({onlyUpdateSidebar: true});
         });
 	}
 
@@ -97,7 +97,7 @@ class DinnerModel extends Observable {
 	removeDishFromMenu(id) {
 		//TODO Lab 1
         this.menu = this.menu.filter((item) => { return item.id != id; })
-        this.notifyObservers({onlyUpdate: "Sidebar"});
+        this.notifyObservers({onlyUpdateSidebar: true});
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

@@ -26,8 +26,8 @@ class SidebarView extends View {
     update() {
         super.update();
 
-        var sidebar = document.createElement("div");
-        this.container.appendChild(sidebar);
+        var sidebar = this.container;
+        //this.container.appendChild(sidebar);
         sidebar.className = "d-flex flex-column hide";
         sidebar.style = "min-width:250px; max-width:250px;";
         let container = $(sidebar);

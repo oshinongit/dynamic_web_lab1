@@ -29,7 +29,6 @@
 
          var menu = this.model.getFullMenu();
          let guests = this.model.getNumberOfGuests();
-         console.log(this.model);
 
          menu.forEach(function(dish) {
              var ingredients = dish.extendedIngredients;

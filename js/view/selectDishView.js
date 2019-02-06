@@ -27,8 +27,6 @@ class SelectDishView extends View {
         super.update();
 
         // Skapa HTML-strukturen
-        var sidebarView = new SidebarView(this.container, this.model);
-
         var selectDish = document.createElement("div");
         selectDish.className = "d-none d-flex flex-column flex-grow-1";
         this.container.appendChild(selectDish);
@@ -42,6 +40,11 @@ class SelectDishView extends View {
 
         this.model.getAllDishes(type, search).then(dishes => {
             jqueryContainer.find("#dishList").html("");
+
+            if (dishes.length == 0) {
+                jqueryContainer.find("#dishList").html("<p>Could not find any recipes.</p>");
+            }
+
             dishes.forEach(function(dish) {
                 var element = document.createElement("div");
                 var view = new DishItemView(element, model, dish);

@@ -3,16 +3,25 @@ var model = null;
 class App {
     constructor() {
         this.views = new Map;
+        this.viewsWithSidebar = new Map;
         this.activeView = "";
         this.model = new DinnerModel();
         this.activeData = null;
+        this.sidebarView = new SidebarView(document.getElementById("sidebar"), this.model, false);
     }
 
-    addView(name, view, element) {
+    addView(name, view, shouldShowSidebar) {
         this.views[name] = new view(document.getElementById("content"), this.model);
-        this.model.addObserver((data) => {
-            if (name == this.activeView) {
-                this.views[name].update(this.activeData);
+        this.viewsWithSidebar[name] = shouldShowSidebar;
+        this.model.addObserver((model, changeData) => {
+            if (changeData && changeData["onlyUpdateSidebar"]) {
+                this.sidebarView.update();
+            }
+            else {
+                if (name == this.activeView) {
+                    this.sidebarView.update();
+                    this.views[name].update(this.activeData);
+                }
             }
         });
     }
@@ -21,6 +30,11 @@ class App {
         this.activeView = name;
         this.views[this.activeView].update(data);
         this.activeData = data;
+
+        $(this.sidebarView.container).addClass("forceHide");
+        if (this.viewsWithSidebar[this.activeView]) {
+            $(this.sidebarView.container).removeClass("forceHide");
+        }
     }
 
     getActiveView() {
@@ -60,11 +74,10 @@ $(function() {
     });
 
     app = new App();
-    app.addView("SelectDish", SelectDishView);
-    app.addView("DishDetail", DishDetailView);
-    app.addView("DishOverview", DishOverviewView);
-    app.addView("Sidebar", SidebarView);
-    app.addView("Print", PrintView);
+    app.addView("SelectDish", SelectDishView, true);
+    app.addView("DishDetail", DishDetailView, true);
+    app.addView("DishOverview", DishOverviewView, false);
+    app.addView("Print", PrintView, false);
     app.setActiveView("SelectDish");
 
     //console.log(app.views["SelectDish"]) --Den här fungerar för att komma åt viewobjektet
