@@ -18,7 +18,6 @@ class SidebarView extends View {
 
         super(container, model);
 
-        this.plusButton = "fisk";
     }
 
 
