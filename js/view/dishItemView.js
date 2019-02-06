@@ -14,5 +14,5 @@
  */
 
 var DishItemView = function (container, model, dish) {
-    container.innerHTML = "<div id='dishItem_" + dish.id + "' class='dishItem text-center'><img src='images/" + dish.image + "' alt='bla bla'/><p>" + dish.name + "</p></div>";
+    container.innerHTML = "<div id='dishItem_" + dish.id + "' class='dishItem text-center'><img src='https://spoonacular.com/recipeImages/" + dish.image + "' alt='" + dish.title + "'/><p>" + dish.title + "</p></div>";
 }

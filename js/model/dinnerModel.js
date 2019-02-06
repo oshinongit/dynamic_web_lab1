@@ -36,7 +36,7 @@ class DinnerModel extends Observable {
 
 	setNumberOfGuests(num) {
         this.numberOfGuests = num;
-        this.notifyObservers({});
+        this.notifyObservers({onlyUpdate: "Sidebar"});
         return this.numberOfGuests;
 	}
 
@@ -74,8 +74,8 @@ class DinnerModel extends Observable {
 		var price = 0;
 
         this.menu.forEach(function(item) {
-            item.ingredients.forEach(function(ingredient) {
-                price += ingredient.price;
+            item.extendedIngredients.forEach(function(ingredient) {
+                price += 1;
             });
         });
 
@@ -87,60 +87,34 @@ class DinnerModel extends Observable {
 	addDishToMenu(id) {
 		//TODO Lab 1
 
-        let dish = this.getDish(id);
-        let alreadyExists = false;
-
-        this.menu.forEach(function(d) {
-            if (dish.type == d.type) {
-                alreadyExists = true;
-                return;
-            }
-        });
-
-        if (!alreadyExists) {
+        this.getDish(id).then(dish => {
             this.menu.push(dish);
-            this.notifyObservers({});
-            return true;
-        }
-
-        return false;
+            this.notifyObservers({onlyUpdate: "Sidebar"});
+        });
 	}
 
 	//Removes dish from menu
 	removeDishFromMenu(id) {
 		//TODO Lab 1
         this.menu = this.menu.filter((item) => { return item.id != id; })
+        this.notifyObservers({onlyUpdate: "Sidebar"});
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	getAllDishes (type,filter) {
-	  return dishes.filter(function(dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			dish.ingredients.forEach(function(ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
-				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
-			}
-		}
-	  	return dish.type == type && found;
-	  });
+        let url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=" + filter + "&type=" + type;
+        return fetch(url,
+              {headers: {'X-Mashape-Key': API_KEY}})
+              .then(response => response.json()).then(data => data.results);
 	}
 
 	//function that returns a dish of specific ID
 	getDish (id) {
-	  for(var key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
-			}
-		}
+        return fetch("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information",
+              {headers: {'X-Mashape-Key': API_KEY}})
+              .then(response => response.json());
 	}
 }
 

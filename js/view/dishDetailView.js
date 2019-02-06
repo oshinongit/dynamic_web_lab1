@@ -34,24 +34,28 @@
              return;
          }
 
-         var dish = this.model.getDish(id);
-         var description = container.find("#dishDescription");
-         var ingredients = container.find("#dishIngredients");
-         var sum = 0;
+         container.find("#dishDescription").html('<div class="sk-folding-cube"><div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div></div>');
+         var dish = this.model.getDish(id).then(dish => {
+             var description = container.find("#dishDescription");
+             var ingredients = container.find("#dishIngredients");
+             var sum = 0;
 
-         description.html("<h1>" + dish.name + "</h1><img width='300px' src='images/" + dish.image + "'/><p>" + dish.description + "</p><button id='backToSearchButton' type='button' class='btn btn-outline-dark'>Back to search</button>");
+             var instructions = dish.instructions == null ? "No instructions." : dish.instructions;
 
-         ingredients.append("<h2>Ingredients</h2>");
-         var html = "<table class='table w-100'>";
-         dish.ingredients.forEach(function(ingredient) {
-             html += "<tr><td>" + ingredient.quantity + " " + ingredient.unit + "</td><td>" + ingredient.name + "</td><td>" + ingredient.price + " SEK</td></tr>";
-             sum += ingredient.price;
+             description.html("<h1>" + dish.title + "</h1><img width='300px' src='" + dish.image + "'/><p>" + instructions + "</p><button id='backToSearchButton' type='button' class='btn btn-outline-dark'>Back to search</button>");
+
+             ingredients.append("<h2>Ingredients</h2>");
+             var html = "<table class='table w-100'>";
+             dish.extendedIngredients.forEach(function(ingredient) {
+                 html += "<tr><td>" + ingredient.amount + " " + ingredient.unit + "</td><td>" + ingredient.name + "</td><td>1 SEK</td></tr>";
+                 sum += 1;
+             });
+             html += "<tr><td></td><td></td><td>" + sum + " SEK</td></tr>"
+             html += "</table>";
+             html += "<button id='buttonAddToMenu' data-dishid='" + id + "' type='button' class='btn btn-outline-dark'>Add to menu</button>"
+             ingredients.append(html);
+
+             this.controller = new DishDetailViewController(this.model);
          });
-         html += "<tr><td></td><td></td><td>" + sum + " SEK</td></tr>"
-         html += "</table>";
-         html += "<button id='buttonAddToMenu' data-dishid='" + id + "' type='button' class='btn btn-outline-dark'>Add to menu</button>"
-         ingredients.append(html);
-
-         this.controller = new DishDetailViewController(this.model);
      }
  }

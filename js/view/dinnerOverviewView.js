@@ -32,14 +32,14 @@
          console.log(this.model);
 
          menu.forEach(function(dish) {
-             var ingredients = dish.ingredients;
+             var ingredients = dish.extendedIngredients;
              var dishPrice = 0;
 
              ingredients.forEach(function(ingredient) {
-                 dishPrice += ingredient.price * guests;
+                 dishPrice += 1 * guests;
              });
 
-             html += "<div class='text-center mx-2'><img src='images/" + dish.image + "' alt='bla bla'/><p>" + dish.name + "</p><p>" + dishPrice + " SEK</p></div>";
+             html += "<div class='text-center mx-2'><img width='200' height='200' src='" + dish.image + "' alt='bla bla'/><p>" + dish.title + "</p><p>" + dishPrice + " SEK</p></div>";
 
          });
 

@@ -8,9 +8,13 @@ class App {
         this.activeData = null;
     }
 
-    addView(name, view) {
+    addView(name, view, element) {
         this.views[name] = new view(document.getElementById("content"), this.model);
-        this.model.addObserver(() => { if (name == this.activeView) { this.views[name].update(this.activeData); } });
+        this.model.addObserver((data) => {
+            if (name == this.activeView) {
+                this.views[name].update(this.activeData);
+            }
+        });
     }
 
     setActiveView(name, data) {
@@ -59,6 +63,7 @@ $(function() {
     app.addView("SelectDish", SelectDishView);
     app.addView("DishDetail", DishDetailView);
     app.addView("DishOverview", DishOverviewView);
+    app.addView("Sidebar", SidebarView);
     app.addView("Print", PrintView);
     app.setActiveView("SelectDish");
 

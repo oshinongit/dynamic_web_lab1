@@ -39,10 +39,10 @@ class SidebarView extends View {
 
         our_menu.forEach(function(dish){
           var dish_price = 0;
-          html += "<tr><td>" + dish.name + "</td>";
-          var dish_ingredients = dish.ingredients;
+          html += "<tr><td>" + dish.title + "</td>";
+          var dish_ingredients = dish.extendedIngredients;
           dish_ingredients.forEach(function(ingredient) {
-            dish_price += ingredient.price * model.getNumberOfGuests();
+            dish_price += 1 * model.getNumberOfGuests();
           });
 
           html += "<td>" + dish_price + " SEK</td></tr>"

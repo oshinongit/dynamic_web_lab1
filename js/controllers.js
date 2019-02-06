@@ -29,9 +29,7 @@ class DishDetailViewController{
  constructor(model) {
        document.getElementById("buttonAddToMenu").addEventListener("click",
            (e) => {
-               if (!model.addDishToMenu(e.target.dataset.dishid)) {
-                   alert("Dish of type \"" + model.getDish(e.target.dataset.dishid).type + "\" already exists.");
-               }
+               model.addDishToMenu(e.target.dataset.dishid);
            });
 
        document.getElementById("backToSearchButton").addEventListener("click",
