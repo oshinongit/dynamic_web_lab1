@@ -13,9 +13,7 @@ class SelectDishViewController{
  constructor(model) {
        document.getElementById("searchbutton").addEventListener("click",
            () => {
-               //let filter =  document.getElementById("searchfield").innerHTML;
-               //let typeSelect = document.getElementById("typeSelect");
-               //let type = typeSelect.options[typeSelect.selectedIndex].value;
+               
                model.notifyObservers();
            });
        $(".dishItem").click(function(e) {
